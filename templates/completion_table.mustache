@@ -1,0 +1,38 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    @template local_completion_report/completion_table
+
+    Course completion report table template.
+
+    Context variables required for this template:
+    * courses - Array of course completion data
+    * strings - Language strings object
+}}
+
+{{#courses}}
+  <table class="generaltable">
+    <thead>
+    <tr>
+      <th>{{strings.coursename}}</th>
+      <th>{{strings.completionstatus}}</th>
+      <th>{{strings.timecompleted}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#coursedata}}
+      <tr>
+        <td><a href="{{courseurl}}">{{{coursename}}}</a></td>
+        <td>{{status}}</td>
+        <td>{{completiondate}}</td>
+      </tr>
+    {{/coursedata}}
+    </tbody>
+  </table>
+{{/courses}}
+
+{{^courses}}
+  <div class="alert alert-info">
+    {{strings.nocoursesenrolled}}
+  </div>
+{{/courses}}
